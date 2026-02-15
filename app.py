@@ -44,7 +44,7 @@ def get_data():
     return df_clean, basket_encoded
 
 @st.cache_data
-def get_rules(basket_encoded):
+def get_rules(_basket_encoded):
     frequent_itemsets = apriori(basket_encoded, min_support=0.01, use_colnames=True)
     rules = association_rules(frequent_itemsets, metric="lift", min_threshold=1)
     rules["antecedents_str"] = rules["antecedents"].apply(lambda x: ', '.join(list(x)))
@@ -194,3 +194,4 @@ elif page == "Smart Placement Tool":
                 st.write(f"Lift: {row['lift']:.2f}x")
     else:
         st.warning("No strong associations found for this item.")
+
