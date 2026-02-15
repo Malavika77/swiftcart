@@ -3,4 +3,5 @@ numpy
 plotly
 scikit-learn
 xgboost
+mlxtend
 lime
